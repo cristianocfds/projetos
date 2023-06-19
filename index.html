@@ -37,6 +37,16 @@
           barra.style.backgroundColor = '#00008B';
         }
       }
+      function enviar(){
+        var meta = document.getElementById('VMetaDia');
+        
+
+        var VendaDia = document.getElementById('VDia');
+
+        var porcento = (VendaDia.value*100)/meta.value;
+        troca(porcento);
+        var txtTaxa = document.getElementById('taxaporcento').innerHTML = porcento+"%";
+      }
     </script>
   </head>
   <body class="p-3 m-0 border-0 bd-example m-0 border-0">
@@ -45,12 +55,13 @@
       <tbody>
         <tr>
           <td><label>Valor da Meta</label></td>
-          <td><input type="number" id="VMetaDia" value="1000" disabled /></td>
+          <td><input type="number" id="VMetaDia" value="1000.00" disabled /></td>
         </tr>
         <tr>
           <td><label>Valor do dia</label></td>
-          <td><input type="number" id="VDia" /></td>
+          <td><input onkeyup="enviar()" type="number" id="VDia" /></td>
         </tr>
+       
       </tbody>
     </table>
     <br />
@@ -62,13 +73,14 @@
       aria-valuenow="75"
       aria-valuemin="0"
       aria-valuemax="100"
-    >
+    ><samp id="taxaporcento">0%</samp>
       <div
         id="barra"
         class="progress-bar progress-bar-striped progress-bar-animated"
         style="width: 0%"
       ></div>
     </div>
+    <div style="display:none;">
     <button onclick="troca(0)">0%</button>
     <button onclick="troca(10)">10%</button>
     <button onclick="troca(40)">40%</button>
@@ -76,7 +88,7 @@
     <button onclick="troca(77)">77%</button>
     <button onclick="troca(99)">99%</button>
     <button onclick="troca(120)">120%</button>
-
+    </div>
     <!-- End Example Code -->
   </body>
 </html>
